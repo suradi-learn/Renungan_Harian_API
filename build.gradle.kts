@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.springframework.boot.gradle.tasks.bundling.BootJar
 
 plugins {
 	kotlin("jvm") version "1.9.25"
@@ -36,6 +37,10 @@ tasks.withType<KotlinCompile>().configureEach {
 		freeCompilerArgs += "-Xjsr305=strict"
 		jvmTarget = "21"
 	}
+}
+
+tasks.named<BootJar>("bootJar") {
+	archiveFileName.set("app.jar")
 }
 
 allOpen {
