@@ -43,6 +43,11 @@ tasks.named<BootJar>("bootJar") {
 	archiveFileName.set("app.jar")
 }
 
+tasks.build {
+	dependsOn("bootJar")
+}
+
+
 allOpen {
 	annotation("jakarta.persistence.Entity")
 	annotation("jakarta.persistence.MappedSuperclass")
