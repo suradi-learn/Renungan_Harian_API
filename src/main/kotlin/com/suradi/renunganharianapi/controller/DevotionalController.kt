@@ -5,6 +5,7 @@ import com.suradi.renunganharianapi.repository.DevotionalRepository
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.time.ZoneId
 
 @RestController
 @RequestMapping("/api/devotionals")
@@ -19,7 +20,7 @@ class DevotionalController(
 
     @GetMapping("/previous")
     fun getPreviousDevotionals(): List<Devotional> {
-        val today = java.time.LocalDate.now()
+        val today = java.time.LocalDate.now(ZoneId.of("Asia/Jakarta"))
         return devotionalRepository.findPreviousDevotionals(
             today.monthValue,
             today.dayOfMonth
